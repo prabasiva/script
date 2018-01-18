@@ -1,3 +1,7 @@
+#
+# Praba Siva
+# mail@prabasiva.com
+#
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/praba.siva/Documents/2017/gsdk/google-cloud-sdk/path.bash.inc' ]; then source '/Users/praba.siva/Documents/2017/gsdk/google-cloud-sdk/path.bash.inc'; fi
@@ -222,6 +226,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
     
 #   kp: kill process owned by my user:
 #   ------------------------------------------------------------
+#   This is to kill the process given in the command line
 kp()
 { 
 if [ $# -eq 0 ]
