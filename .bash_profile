@@ -219,6 +219,35 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 #   my_ps: List processes owned by my user:
 #   ------------------------------------------------------------
     my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
+    
+#   kp: kill process owned by my user:
+#   ------------------------------------------------------------
+kp()
+{ 
+if [ $# -eq 0 ]
+then
+        echo "Format: kp processname"
+        return;
+fi
+string=$1
+len=${#string}
+if [ $len -le 3 ]
+then
+        echo "Too short string. Be little more specific.."
+        return;
+fi
+pidlist=`ps -afe -u $USER | grep -i $1 | grep -i -v grep | awk '{print $2}'`
+len=${#pidlist}
+if [ $len -eq 0 ]
+then
+        echo "No Process found.."
+        return;
+fi
+for i in echo $pidlist
+do
+echo $i
+done;
+}
 
 
 #   ---------------------------
