@@ -249,6 +249,38 @@ echo $i
 done;
 }
 
+#   kp(): Kill the process
+#   ------------------------------------------------------------
+kp()
+{ 
+echo $#
+if [ $# -eq 0 ]
+then
+        echo "Format: kp processname"
+        return;
+fi
+string=$1
+len=${#string}
+if [ $len -le 3 ]
+then
+        echo "Too short string. Be little more specific.."
+        return;
+fi
+pidlist=`ps -afe -u $USER | grep -i $1 | grep -i -v grep | awk '{print $2}'`
+len=${#pidlist}
+if [ $len -eq 0 ]
+then
+        echo "No Process found.."
+        return;
+fi
+for i in echo $pidlist
+do
+kill -9 $i
+done;
+}
+
+
+
 
 #   ---------------------------
 #   6. NETWORKING
